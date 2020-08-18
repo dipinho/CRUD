@@ -3,51 +3,41 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Listagem de Produtos</title>
+        <title>Listagem de Categorias</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/23ff63120e.js" crossorigin="anonymous"></script>
 
     </head>
     <body >
-        <div class="container" style="margin-top:40px">
-            <h3>Lista de Produtos</h3>
+        <div class="container" style="margin-top:40px; width:500px">
+            <h3>Lista de Categorias</h3>
             <br>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                    <th scope="col">Nro Produto</th>
-                    <th scope="col">Nome Produto</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Quantidade</th>
-                    <th scope="col">Fornecedor</th>
+                    <th scope="col">Nome Categoria</th>
+                    
                     <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 
                     <?php
                         include 'conexao.php';
-                        $sql = "SELECT * FROM `estoque`";
+                        $sql = "SELECT * FROM `categoria`";
                         $busca = mysqli_query($conexao, $sql);
                         
                         while($array = mysqli_fetch_array($busca)){
-                            $id_estoque = $array['id_estoque'];
-                            $nroproduto = $array['nroproduto'];
-                            $nomeproduto = $array['nomeproduto'];
+                            $id_categoria = $array['id_categoria'];
                             $categoria = $array['categoria'];
-                            $quantidade = $array['quantidade'];
-                            $fornecedor = $array['fornecedor'];
+                            
                             ?>
 
                         <tr>
-
-                            <td> <?php echo $nroproduto ?> </td>
-                            <td> <?php echo $nomeproduto ?> </td>
                             <td> <?php echo $categoria ?> </td>
-                            <td> <?php echo $quantidade ?> </td>
-                            <td> <?php echo $fornecedor ?> </td>
+                            
                             <td>
-                                <a class="btn btn-warning btn-sm" href="editar_produto.php?id=<?php echo $id_estoque?>" role="button"><i class="far fa-edit"></i>&nbsp; Editar</a>
-                                <a class="btn btn-danger btn-sm" href="deletar_produto.php?id=<?php echo $id_estoque?>" role="button"><i class="far fa-trash-alt"></i>&nbsp; Apagar</a>
+                                <a class="btn btn-warning btn-sm" href="editar_categoria.php?id=<?php echo $id_categoria?>" role="button"><i class="far fa-edit"></i>&nbsp; Editar</a>
+                                <a class="btn btn-danger btn-sm" href="deletar_categoria.php?id=<?php echo $id_categoria?>" role="button"><i class="far fa-trash-alt"></i>&nbsp; Apagar</a>
                             </td>
 
                     <?php   }   ?>
